@@ -27,6 +27,9 @@ $DCCLIST = new DCCListManager(DB_TRANSFERS_FILE);
 /** Processes **/
 $PIDS = Array();
 
+/** Cleans up transfers list **/
+$DCCLIST->clearDB();
+
 /** Enter in main loop **/
 while($IRC->isConnected())
 {

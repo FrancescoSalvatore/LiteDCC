@@ -49,6 +49,11 @@ class DCCListManager
 		else	return FALSE;
 	}
 	
+	function clearDB()
+	{
+		$this->removeAllTransfers();
+	}
+	
 	function updateSentData($id, $byte_sent)
 	{
 		if($this->db->exec("UPDATE transfers SET byte_sent = $byte_sent WHERE rowid = $id;"))
