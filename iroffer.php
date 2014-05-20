@@ -11,6 +11,7 @@ include_once("xdcc-commands.php");
 include_once("class/IRCConnection.php");
 include_once("class/ListManager.php");
 include_once("class/DCCTransfer.php");
+include_once("class/DCCListManager.php");
 
 /** Setting up the connection **/
 $IRC = new IRCConnection();
@@ -19,6 +20,9 @@ $IRC->joinChannel(IRC_CHANNEL, IRC_CHANNEL_ENTRY_MESSAGE);
 
 /** Load List Manager **/
 $LIST = new ListManager(DB_FILE);
+
+/** Load DCC transfers list manager **/
+$DCCLIST = new DCCListManager(DB_TRANSFERS_FILE);
 
 /** Processes **/
 $PIDS = Array();

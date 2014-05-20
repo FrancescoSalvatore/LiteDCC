@@ -35,6 +35,14 @@ class ListManager
 		return $this->db->querySingle("SELECT rowid,* FROM list WHERE rowid = $id", TRUE);
 	}
 	
+	function getPackageNumberByName($filename)
+	{
+		$pkgnum = $this->db->querySingle("SELECT rowid FROM list WHERE filename = '$filename';");
+		if($pkgnum !== FALSE && $pkgnum !== NULL)
+			return $pkgnum;
+		else	return FALSE;
+	}
+	
 	function getList()
 	{
 		$list = Array();

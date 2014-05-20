@@ -40,5 +40,6 @@ Done!
 * Support for differents DBMS for file-list and transfer-list
 * Support for queues
 * Support for bandwidth controls
+* Support for RESUME
 * Incorporated HTTP server for bot statistics (active transfers, weekly stats etc...)
 * Switch to another multitasking library also supported by Windows

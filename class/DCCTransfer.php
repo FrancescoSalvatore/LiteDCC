@@ -35,14 +35,13 @@ class DCCTransfer
 		return ftell($this->file);
 	}
 	
-	function waitForAck()
+	/*function waitForAck()
 	{
 		$response = socket_read($this->socket, 4);
-		echo bindec($response)."\n";
-		/*if(trim($response) == $this->getSentData())
+		if(trim($response) == $this->getSentData())
 			return TRUE;
-		else	return FALSE;*/
-	}
+		else	return FALSE;
+	}*/
 	
 	function waitForClosing()
 	{
@@ -60,7 +59,6 @@ class DCCTransfer
 	function closeConnection()
 	{
 		socket_close($this->socket);
-		fclose($this->file);
 	}
 }
 

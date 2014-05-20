@@ -26,7 +26,10 @@ define('IRC_CHANNEL_ENTRY_MESSAGE', 'ECCOMI CAZZO!');
 define('DB_FILE', 'db/list.db');
 
 //SQLite Transfers File
-define('DB_FILE', 'db/transfers.db');
+define('DB_TRANSFERS_FILE', 'db/transfers.db');
+
+//Timetick for transfers list updating (in seconds)
+define('TRANSFERS_UPDATE_TIME', 3);
 
 //File's directory path
 define('FILE_PATH', 'file/');
