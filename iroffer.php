@@ -30,6 +30,9 @@ $PIDS = Array();
 /** Cleans up transfers list **/
 $DCCLIST->clearDB();
 
+/** Set startup time **/
+define('STARTUP_TIME', time());
+
 /** Enter in main loop **/
 while($IRC->isConnected())
 {

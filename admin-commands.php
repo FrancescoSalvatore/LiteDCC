@@ -63,6 +63,36 @@ function admin_commands_executor($command, $sender)
 					break;
 		}
 	}
+	elseif(trim(strtolower($parts[2])) == "bot")
+	{
+		switch(trim(strtolower($parts[3])))
+		{
+			case "shutdown":
+					$IRC->sendUserMessage($sender, "Comando di SHUTDOWN ricevuto. Procedo a spegnermi padrone.");
+					$DCCLIST->removeAllTransfers();
+					$IRC->quit();
+					exit(0);
+					break;
+					
+			case "getpid":
+					$IRC->sendUserMessage($sender, "BOT PID: ".posix_getpid());
+					break;
+					
+			case "uptime":
+					$start = new DateTime('@'.STARTUP_TIME);
+					$now = new DateTime();
+					$diff = $start->diff($now);
+					$message = "UPTIME >> ".$diff->format('%Y anni, %m mesi, %d giorni, %H ore, %I minuti, %S secondi');
+					$IRC->sendUserMessage($sender, $message);
+					break;
+					
+			
+			default:
+					$IRC->sendUserMessage($sender, "Comando ADMIN BOT non identificato o non supportato");
+					break;
+		}
+	}
+	
 }
 
 ?>

@@ -80,6 +80,11 @@ class DCCListManager
 		return $this->db->querySingle("SELECT rowid,* FROM transfers WHERE rowid = $id", TRUE);
 	}
 	
+	function getActiveTransfersNumber()
+	{
+		return $this->db->querySingle("SELECT COUNT(*) FROM transfers;");
+	}
+	
 	function isTransferAlive($id)
 	{
 		return $this->db->querySingle("SELECT EXISTS(SELECT * FROM transfers WHERE rowid = $id);");

@@ -31,6 +31,13 @@ define('DB_TRANSFERS_FILE', 'db/transfers.db');
 //Timetick for transfers list updating (in seconds)
 define('TRANSFERS_UPDATE_TIME', 3);
 
+//Maximum bandwidth reserved for each file transfers in KB/s (set 0 for unlimited speed)
+//This value is "virtual" (and it is minor precise with higher speeds) because real transfer speed is established by a lot of factors
+define('TRANSFERS_BANDWIDTH', 500);
+
+//Maximum simultaneous transfers (set 0 for unlimited)
+define('TRANSFERS_SIMUL_MAX', 1);
+
 //File's directory path
 define('FILE_PATH', 'file/');
 

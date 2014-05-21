@@ -2,7 +2,7 @@
 
 function xdcc_commands_executor($command, $sender)
 {
-	global $LIST, $IRC;
+	global $LIST, $IRC, $DCCLIST;
 	
 	$parts = explode( " ", $command );
 	
@@ -29,6 +29,12 @@ function xdcc_commands_executor($command, $sender)
 				break;
 				
 		case "send":
+				if($DCCLIST->getActiveTransfersNumber() >= TRANSFERS_SIMUL_MAX)
+				{
+					$IRC->sendNotice($sender, "E' stato raggiunto il numero massimo di trasferimenti attivi. Si prega di riprovare più tardi.");
+					break;
+				}
+				
 				$info = $LIST->getFileInfo(trim($parts[2]));
 				xdcc_send(FILE_PATH . $info["filename"], $info["filesize"], $sender);
 				$LIST->incrementTaken(trim($parts[2]));

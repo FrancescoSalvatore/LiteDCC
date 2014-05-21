@@ -67,8 +67,6 @@ class IRCConnection
 		$parts_from_spaces = explode(" ", $resp);
 		$parts_from_colon = explode(":", $resp);
 		
-		//echo $parts_from_spaces[2];
-		
 		if($parts_from_spaces[0]=="PING")
 		{
 			$data["type"] = "PING";
@@ -97,6 +95,11 @@ class IRCConnection
 	function pong($recipient)
 	{
 		$this->sendMessageToServer("PONG $recipient");
+	}
+	
+	function quit($exit_message = "")
+	{
+		$this->sendMessageToServer("QUIT $exit_message");
 	}
 	
 	

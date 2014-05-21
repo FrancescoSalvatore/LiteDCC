@@ -35,11 +35,22 @@ function xdcc_transfer($requested_file, $filesize, $applicant, $socket)
 	$DCC = new DCCTransfer($socket, $requested_file, $filesize);
 	$transfer_id = $DCCLIST->createNewTransfer($applicant, $LIST->getPackageNumberByName(basename($requested_file)));
 	$time = time() + TRANSFERS_UPDATE_TIME;
+	
+	//Set max bandwidth for this transfer
+	if(TRANSFERS_BANDWIDTH == 0)
+		$time_to_sleep = 0;
+	else
+	{
+		$time_to_sleep = 1000000 / ( (TRANSFERS_BANDWIDTH*1024 ) / $DCC->getBlockSize());
+		$time_to_sleep -= ( ($time_to_sleep / 100) * (TRANSFERS_BANDWIDTH * 0.04) ); //CPU ticks adjust
+	}
+		
 	while(!$DCC->is_eof())
 	{
 		if( $DCC->sendNextBlock() !== TRUE )
 		{
 			$IRC->sendNotice($applicant, "Errore di connessione, il trasferimento è stato chiuso.");
+			$DCCLIST->removeTransfer($transfer_id);
 			$DCC->closeConnection();
 			return;
 		}
@@ -57,6 +68,7 @@ function xdcc_transfer($requested_file, $filesize, $applicant, $socket)
 			$DCCLIST->updateSentData($transfer_id, $DCC->getSentData());
 			$time = time() + TRANSFERS_UPDATE_TIME;
 		}
+		usleep($time_to_sleep);
 		
 	}
 	$DCC->waitForClosing();

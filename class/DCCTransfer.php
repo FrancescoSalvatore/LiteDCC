@@ -35,6 +35,12 @@ class DCCTransfer
 		return ftell($this->file);
 	}
 	
+	function getBlockSize()
+	{
+		return $this::block_size;
+	}
+	
+	
 	/*function waitForAck()
 	{
 		$response = socket_read($this->socket, 4);
