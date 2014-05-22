@@ -50,16 +50,16 @@ while($IRC->isConnected())
 		$parts = explode(" ", $data["content"]);
 		
 		echo "\n";
-		echo trim($parts[0])."\n";
+		echo trim($parts[0], "0\x03")."\n";
 		echo $parts[1]."\n";
 		echo $parts[2]."\n";
 		echo $parts[3]."\n";
 		
-		if($parts[0] == "admin")
+		if(trim($parts[0], " \t\n\r\0\x0B\x030") == "admin")
 		{
 			admin_commands_executor($data["content"], $data["sender"]);
 		}
-		else if($parts[0] == "xdcc")
+		else if(trim($parts[0], " \t\n\r\0\x0B\x030") == "xdcc")
 		{
 			xdcc_commands_executor($data["content"], $data["sender"]);
 		}

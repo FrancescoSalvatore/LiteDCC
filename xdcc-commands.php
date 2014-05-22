@@ -35,9 +35,9 @@ function xdcc_commands_executor($command, $sender)
 					break;
 				}
 				
-				$info = $LIST->getFileInfo(trim($parts[2]));
+				$info = $LIST->getFileInfo(trim($parts[2], " \t\n\r\0\x0B#"));
 				xdcc_send(FILE_PATH . $info["filename"], $info["filesize"], $sender);
-				$LIST->incrementTaken(trim($parts[2]));
+				$LIST->incrementTaken(trim($parts[2], " \t\n\r\0\x0B#"));
 				break;
 				
 		default:

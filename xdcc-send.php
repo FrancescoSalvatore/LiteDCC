@@ -10,6 +10,9 @@ function xdcc_send($requested_file, $filesize, $applicant)
 	//Send DCC answer to applicant
 	$IRC->sendDCCResponse($applicant, basename($requested_file), DCC_ADDRESS, DCC_PORT, $filesize);
 	
+	//Test if a RESUME is requested
+	//TODO
+	
 	$socket = socket_accept($listen_socket);
 	
 	$pid = pcntl_fork();

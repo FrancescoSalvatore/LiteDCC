@@ -27,7 +27,7 @@ Done!
 
 ##Today Features List
 
-* DCC SEND (and Fast DCC) with transfer speed up to 8 MB/s per transfer
+* DCC SEND (with support for Turbo DCC) with transfer speed up to 8 MB/s per transfer
 * Files list managed by SQLite, so very easy to move beetween different machines and installations
 * Admin commands supported likes file adding, file removing, listing current transfers, shutdown bot etc... with password protection
 * XDCC traditional commands supported like LIST, INFO, SEND, SEARCH etc...
