@@ -68,6 +68,21 @@ class ListManager
 		return $list;
 	}
 	
+	function search($keyword)
+	{
+		$list = Array();
+		$result = $this->db->query("SELECT rowid,* FROM list WHERE filename LIKE '%$keyword%';");
+		while($row = $result->fetchArray())
+		{
+			$list[$row['rowid']]["filename"] = $row["filename"];
+			$list[$row['rowid']]["filesize"] = $row["filesize"];
+			$list[$row['rowid']]["add_date"] = $row["add_date"];
+			$list[$row['rowid']]["md5"] = $row["md5"];
+			$list[$row['rowid']]["taken"] = $row["taken"];
+		}
+		return $list;
+	}
+	
 	function incrementTaken($id)
 	{
 		$info = $this->getFileInfo($id);

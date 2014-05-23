@@ -86,6 +86,9 @@ function admin_commands_executor($command, $sender)
 					$IRC->sendUserMessage($sender, $message);
 					break;
 					
+			case "version":
+					$IRC->sendUserMessage($sender, "LiteDCC ".VERSION." coded by Francesco Salvatore");
+					break;
 			
 			default:
 					$IRC->sendUserMessage($sender, "Comando ADMIN BOT non identificato o non supportato");

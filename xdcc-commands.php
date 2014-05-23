@@ -18,6 +18,18 @@ function xdcc_commands_executor($command, $sender)
 				}
 				break;
 				
+				
+		case "search":
+				$IRC->sendNotice($sender, "Ricerca di \"".trim($parts[2])."\" nella lista...");
+				$list = $LIST->search(trim($parts[2]));
+				$IRC->sendNotice($sender, "Trovati ".count($list)." risultati");
+				foreach($list as $key => $value)
+				{
+					$message = "- Pack #".$key.", \"".$value['filename']."\"";
+					$IRC->sendNotice($sender, $message);
+				}
+				break;
+				
 		case "info":
 				$info = $LIST->getFileInfo(trim($parts[2]));
 				$IRC->sendNotice($sender, "Informazioni per il pack #".trim($parts[2]));

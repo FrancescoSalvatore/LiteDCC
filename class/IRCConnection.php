@@ -58,10 +58,7 @@ class IRCConnection
 	function getData()
 	{
 		$resp = $this->readDataFromServer();
-		//if($resp == "") continue;
 		if($resp === "") { $this->connected = false; }
-		
-		echo $resp."\n";
 		
 		$data = Array();
 		$parts_from_spaces = explode(" ", $resp);
