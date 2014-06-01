@@ -48,6 +48,11 @@ class IRCConnection
 		$this->sendUserMessage($user, $this->format_ctcp_cmd("DCC SEND $filename ". ip2long($host) ." $port $filesize"));
 	}
 	
+	function sendDCCAccept($user, $filename, $port, $position)
+	{
+		$this->sendUserMessage($user, $this->format_ctcp_cmd("DCC ACCEPT $filename $port $position"));
+	}
+	
 	function isConnected()
 	{
 		if($this->connected) return true;
@@ -59,7 +64,6 @@ class IRCConnection
 	{
 		$resp = $this->readDataFromServer();
 		if($resp === "") { $this->connected = false; }
-		
 		$data = Array();
 		$parts_from_spaces = explode(" ", $resp);
 		$parts_from_colon = explode(":", $resp);
@@ -87,6 +91,38 @@ class IRCConnection
 		else return null;
 		
 		return $data;
+	}
+	
+	function isResumeRequested()
+	{
+		$resp = $this->readDataFromServer();
+		if(trim($resp) == "")
+		{
+			return FALSE;
+		}
+		else
+		{
+			$parts_from_spaces = explode(" ", $resp);
+			if(trim($parts_from_spaces[4]) == "RESUME")
+			{
+				$resume_position = trim($parts_from_spaces[7], " \x01\r\n");
+			}
+			else
+			{
+				return FALSE;
+			}
+		}
+		return $resume_position;
+	}
+	
+	function setBlockingSocket()
+	{
+		socket_set_block($this->socket);
+	}
+	
+	function setNonBlockingSocket()
+	{
+		socket_set_nonblock($this->socket);
 	}
 	
 	function pong($recipient)
@@ -132,7 +168,7 @@ class IRCConnection
 	
 	private function readDataFromServer()
 	{
-		return socket_read($this->socket, 2048, PHP_NORMAL_READ);
+		return socket_read($this->socket, 2048, PHP_BINARY_READ);
 	}
 	
 	private function format_ctcp_cmd($cmd)

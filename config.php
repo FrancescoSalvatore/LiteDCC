@@ -5,19 +5,19 @@
 /*** IRC ***/
 
 //SERVER
-define('IRC_SERVER', 'YOUR_SERVER');
+define('IRC_SERVER', 'irc.quartznet.org');
 
 //PORT
 define('IRC_PORT', '6667');
 
 //NICKNAME
-define('IRC_NICKNAME', 'BOT_NICKNAME');
+define('IRC_NICKNAME', 'AN-MATA');
 
 //PASSWORD
 define('IRC_PASSWORD', '');
 
 //CHANNEL
-define('IRC_CHANNEL', 'YOUR_CHANNEL');
+define('IRC_CHANNEL', '#canaletto');
 
 //CHANNEL ENTRY MESSAGE - set to NULL if you don't want an entry message
 define('IRC_CHANNEL_ENTRY_MESSAGE', 'ENTRY_MESSAGE');
@@ -34,7 +34,7 @@ define('TRANSFERS_UPDATE_TIME', 3);
 
 //Maximum bandwidth reserved for each file transfers in KB/s (set 0 for unlimited speed)
 //This value is "virtual" (and it is minor precise with higher speeds) because real transfer speed is established by a lot of factors
-define('TRANSFERS_BANDWIDTH', 500);
+define('TRANSFERS_BANDWIDTH', 0);
 
 //Maximum simultaneous transfers (set 0 for unlimited)
 define('TRANSFERS_SIMUL_MAX', 1);

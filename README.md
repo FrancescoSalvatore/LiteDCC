@@ -1,6 +1,6 @@
 LiteDCC
 =======
-####Version 0.2 beta
+####Version 0.3 beta
 A simple IRC iroffer bot completely written in PHP.
 
 
@@ -32,6 +32,7 @@ Done!
 ##Today Features List
 
 * DCC SEND (with support for Turbo DCC) with transfer speed up to 8 MB/s per transfer
+* RESUME supported
 * Files list managed by SQLite, so very easy to move beetween different machines and installations
 * Admin commands supported likes file adding, file removing, listing current transfers, shutdown bot etc... with password protection
 * XDCC traditional commands supported like LIST, INFO, SEND, SEARCH etc...
@@ -44,6 +45,5 @@ Done!
 
 * Support for differents DBMS for file-list and transfer-list
 * Support for queues
-* Support for RESUME
 * Incorporated HTTP server for bot statistics (active transfers, weekly stats etc...)
 * Switch to another multitasking library also supported by Windows

@@ -7,19 +7,43 @@ function xdcc_send($requested_file, $filesize, $applicant)
 	
 	$listen_socket = socket_create_listen(DCC_PORT);
 	
+	$position = 0;
+	socket_set_nonblock($listen_socket);
+	$time = time();
+	
 	//Send DCC answer to applicant
 	$IRC->sendDCCResponse($applicant, basename($requested_file), DCC_ADDRESS, DCC_PORT, $filesize);
 	
-	//Test if a RESUME is requested
-	//TODO
+	$IRC->setNonBlockingSocket();
 	
-	$socket = socket_accept($listen_socket);
+	//Test if a RESUME is requested and wait for a connection
+	while(time() <= ($time+15))
+	{
+		$socket = socket_accept($listen_socket);
+		if($socket) break;
+		$resume = $IRC->isResumeRequested();
+		if($resume !== FALSE)
+		{
+			$position = $resume;
+			$IRC->sendDCCAccept($applicant, basename($requested_file), DCC_PORT, $position);
+		}
+	}
+	
+	$IRC->setBlockingSocket();
+	
+	//Connection timed-out
+	if($socket == FALSE)
+	{
+		echo "QUIIIIIIIIIII";
+		$IRC->sendNotice($applicant, "Connessione in timeout. Controllare i settaggi del proprio client e riprovare.");
+		return;
+	}
 	
 	$pid = pcntl_fork();
 	
 	if($pid > 0)
 	{
-		xdcc_transfer($requested_file, $filesize, $applicant, $socket);
+		xdcc_transfer($requested_file, $filesize, $position, $applicant, $socket);
 		die();
 	}
 	
@@ -29,13 +53,13 @@ function xdcc_send($requested_file, $filesize, $applicant)
 
 
 
-function xdcc_transfer($requested_file, $filesize, $applicant, $socket)
+function xdcc_transfer($requested_file, $filesize, $filepoint, $applicant, $socket)
 {
 	global $IRC;
 	global $DCCLIST;
 	global $LIST;
 	
-	$DCC = new DCCTransfer($socket, $requested_file, $filesize);
+	$DCC = new DCCTransfer($socket, $requested_file, $filesize, $filepoint);
 	$transfer_id = $DCCLIST->createNewTransfer($applicant, $LIST->getPackageNumberByName(basename($requested_file)));
 	$time = time() + TRANSFERS_UPDATE_TIME;
 	

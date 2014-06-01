@@ -1,5 +1,5 @@
 <?php
-/****  IRC Iroffer by Francesco Salvatore  ****/
+/****  LiteDCC - an IRC Iroffer by Francesco Salvatore  ****/
 
 error_reporting(0);
 
@@ -16,12 +16,12 @@ include_once("class/DCCListManager.php");
 include_once("class/Colors.php");
 
 /** Set bot version **/
-define('VERSION', '0.2 beta' );
+define('VERSION', '0.3 beta' );
 
 /* --------------------------------------------------------------------------------- */
 
 /** Testing CL options **/
-$option = getopt("v", $longopt);
+$option = getopt("v");
 foreach($option as $key => $val)
 {
 	switch($key)

@@ -1,0 +1,26 @@
+Version 0.3 beta
+
+- Added support for RESUME in transfers
+- Improved error handling
+- Minor bugfixing
+
+
+-------------------------------------------------------------------------------
+
+
+Version 0.2 beta
+
+- Added XDCC command "SEARCH"
+- Added starting checkup
+- Command line graphic restyled
+- Improved compatibility with mIRC client query messages
+- Added bandwidth control option
+- Added new admin commands like shutdown, getPID etc
+
+
+-------------------------------------------------------------------------------
+
+
+Version 0.1 beta
+
+- First release
