@@ -1,9 +1,20 @@
 <?php
- 
-	class Colors {
+
+//! Colors Class
+/*!
+A simple class that coloring strings for Unix terminal
+
+\author Francesco Salvatore
+\copyright Apache License 2.0
+*/
+class Colors {
 		private $foreground_colors = array();
 		private $background_colors = array();
- 
+ 		
+ 		//! Contructor
+		/*!
+		Initialize arrays of colors
+		*/
 		public function __construct() {
 			// Set up shell colors
 			$this->foreground_colors['black'] = '0;30';
@@ -33,7 +44,13 @@
 			$this->background_colors['light_gray'] = '47';
 		}
  
-		// Returns colored string
+		//! Get the string colored
+		/*!
+		\param $string String, string to be colored.
+		\param $foreground_color String, the foreground color of text.
+		\param $background_color String, the background color of text.
+		\return Colored string.
+		*/
 		public function getColoredString($string, $foreground_color = null, $background_color = null) {
 			$colored_string = "";
  
@@ -52,15 +69,20 @@
 			return $colored_string;
 		}
  
-		// Returns all foreground color names
+		//! Get available colors for foreground
+		/*!
+		\return An array of strings containing the available colors for foreground.
+		*/
 		public function getForegroundColors() {
 			return array_keys($this->foreground_colors);
 		}
  
-		// Returns all background color names
+		//! Get available colors for background
+		/*!
+		\return An array of strings containing the available colors for background.
+		*/
 		public function getBackgroundColors() {
 			return array_keys($this->background_colors);
 		}
-	}
- 
+}
 ?>

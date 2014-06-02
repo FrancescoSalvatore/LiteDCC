@@ -1,5 +1,8 @@
 #Ignoring the file folder
 file/*
 
+#Ignoring DB files
+*.db
+
 #Ignoring temporary files
 *~

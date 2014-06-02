@@ -14,7 +14,7 @@ LiteDCC DOES NOT WORK on Windows (because multitasking library ``` pcntl ``` is 
 =======
 
 ##Installation, configuration and start to use
-! Keep in mind that LiteDCC is a work in progess project and i have no finished it. So, if you are searching for a stable DCC bot please go away.
+! Keep in mind that LiteDCC is a work in progess project. So, if you are searching for a stable DCC bot please go away.
 
 Copy and paste on your terminal (Debian/Ubuntu):
 ```
