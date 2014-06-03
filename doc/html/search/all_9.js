@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['litedcc_20_2d_20an_20easy_20php_20iroffer',['LiteDCC - An easy PHP iroffer',['../index.html',1,'']]],
-  ['listmanager',['ListManager',['../classListManager.html',1,'']]]
+  ['joinchannel',['joinChannel',['../classIRCConnection.html#a9e82f42f9b4a98c3251ca5bcdae8d6b0',1,'IRCConnection']]]
 ];

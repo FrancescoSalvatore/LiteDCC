@@ -17,7 +17,7 @@ function xdcc_send($requested_file, $filesize, $applicant)
 	$IRC->setNonBlockingSocket();
 	
 	//Test if a RESUME is requested and wait for a connection
-	while(time() <= ($time+15))
+	while(time() <= ($time+3))
 	{
 		$socket = socket_accept($listen_socket);
 		if($socket) break;

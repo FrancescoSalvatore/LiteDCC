@@ -50,6 +50,18 @@ define('DCC_PORT', 9999);
 //If you are behind a NAT please refer to NAT address
 define('DCC_ADDRESS', '192.168.25.128');
 
+//HTTP server enabled?
+define('HTTP_ENABLED', true);
+
+//HTTP host address to bind to
+define('HTTP_ADDRESS', '127.0.0.1');
+
+//HTTP host port
+define('HTTP_PORT', 8080);
+
+//HTTP default page
+define('HTTP_DEFAULT_PAGE', '/home/francesco/Documenti/iroffer/LiteDCC/webpage.php');
+
 /*** ADMIN POWER ***/
 
 //ADMIN PASSWORD

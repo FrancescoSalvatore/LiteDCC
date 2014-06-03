@@ -1,3 +1,14 @@
+Version 0.4 beta
+
+- Added internal HTTP server
+- Extended documentation
+- Fixed a bug in XDCC SEND
+- Minor bugfixing and improvements
+
+
+-------------------------------------------------------------------------------
+
+
 Version 0.3 beta
 
 - Added support for RESUME in transfers

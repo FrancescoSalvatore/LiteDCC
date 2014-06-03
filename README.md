@@ -1,6 +1,6 @@
 LiteDCC
 =======
-####Version 0.3 beta
+####Version 0.4 beta
 A simple IRC iroffer bot completely written in PHP.
 
 
@@ -37,6 +37,7 @@ Done!
 * Admin commands supported likes file adding, file removing, listing current transfers, shutdown bot etc... with password protection
 * XDCC traditional commands supported like LIST, INFO, SEND, SEARCH etc...
 * Support for bandwidth controls
+* Incorporated HTTP server for tracking active transfers and file list
 * High configurable options
 
 =======
@@ -45,5 +46,4 @@ Done!
 
 * Support for differents DBMS for file-list and transfer-list
 * Support for queues
-* Incorporated HTTP server for bot statistics (active transfers, weekly stats etc...)
 * Switch to another multitasking library also supported by Windows

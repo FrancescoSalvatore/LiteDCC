@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['ircconnection',['IRCConnection',['../classIRCConnection.html',1,'']]]
+  ['httpserver',['HTTPServer',['../classHTTPServer.html',1,'']]]
 ];

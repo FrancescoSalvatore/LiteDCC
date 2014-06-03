@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['listmanager',['ListManager',['../classListManager.html',1,'']]]
+  ['ircconnection',['IRCConnection',['../classIRCConnection.html',1,'']]]
 ];

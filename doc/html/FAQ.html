@@ -80,10 +80,13 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="textblock"><h3>Why LiteDCC supports only file no much larger than 2GB?</h3>
 <p>LiteDCC supports only file with size inferior than 2GB because PHP built-in integer type is 32bit signed, so the filesize() function cannot return a value larger than 2147483648 byte, that is 2GB.</p>
 <p>If you want to manage larger files you can use 64bit version of PHP (that is in beta) but anyway DCC protocol is limited at 4GB, so the maximum filesize results even so 4GB. </p>
+<hr/>
+<h3>Why LiteDCC internal HTTP server does not support other file than the default page?</h3>
+<p>Because it is a very very simple server. Maybe in future releases i expand it with support for other files (images, stylesheets etc...). </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 2 2014 23:19:39 for LiteDCC by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Jun 3 2014 14:45:01 for LiteDCC by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

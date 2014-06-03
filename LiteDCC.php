@@ -5,6 +5,7 @@ error_reporting(0);
 
 /** Includes Area **/
 include_once("config.php");
+include_once("version.php");
 include_once("start_checkup.php");
 include_once("admin-commands.php");
 include_once("xdcc-send.php");
@@ -13,10 +14,8 @@ include_once("class/IRCConnection.php");
 include_once("class/ListManager.php");
 include_once("class/DCCTransfer.php");
 include_once("class/DCCListManager.php");
+include_once("class/HTTPServer.php");
 include_once("class/Colors.php");
-
-/** Set bot version **/
-define('VERSION', '0.3 beta' );
 
 /* --------------------------------------------------------------------------------- */
 
@@ -41,10 +40,10 @@ echo "LiteDCC is starting...\n\n";
 echo "Testing requirements...";
 $ret = start_checkup();
 if($ret === TRUE)
-	echo "\t\t[ ".$COLORS->getColoredString("OK", "light_green")." ]\n";
+	echo "\t\t\t[ ".$COLORS->getColoredString("OK", "light_green")." ]\n";
 else
 {
-	echo "\t\t[ ".$COLORS->getColoredString("ERROR", "light_red")." ]\n";
+	echo "\t\t\t[ ".$COLORS->getColoredString("ERROR", "light_red")." ]\n";
 	echo $ret."\n\nTerminated execution.\n";
 	exit(1);
 }
@@ -55,10 +54,10 @@ echo "Connecting to the server...";
 $IRC = new IRCConnection();
 $ret = $IRC->connect(IRC_SERVER, IRC_PORT, IRC_NICKNAME, IRC_PASSWORD);
 if($ret === TRUE)
-	echo "\t[ ".$COLORS->getColoredString("OK", "light_green")." ]\n";
+	echo "\t\t[ ".$COLORS->getColoredString("OK", "light_green")." ]\n";
 else
 {
-	echo "\t[ ".$COLORS->getColoredString("ERROR", "light_red")." ]\n";
+	echo "\t\t[ ".$COLORS->getColoredString("ERROR", "light_red")." ]\n";
 	echo $ret."\n\nTerminated execution.\n";
 	exit(1);
 }
@@ -73,7 +72,23 @@ $LIST = new ListManager(DB_FILE);
 /** Load DCC transfers list manager **/
 $DCCLIST = new DCCListManager(TRANSFERS_FILE);
 
-echo "\t\t[ ".$COLORS->getColoredString("OK", "light_green")." ]\n";
+echo "\t\t\t[ ".$COLORS->getColoredString("OK", "light_green")." ]\n";
+
+
+/** Launching HTTP server **/
+if(HTTP_ENABLED)
+{
+	echo "Launching HTTP server on port ".HTTP_PORT."...";
+	$HTTP = new HTTPServer(HTTP_DEFAULT_PAGE, HTTP_ADDRESS, HTTP_PORT);
+	if( ($ret = $HTTP->start()) != TRUE) 
+	{
+		echo "\t[ ".$COLORS->getColoredString("ERROR", "light_red")." ]\n";
+		echo $ret."\n\nTerminated execution.\n";
+		exit(1);
+	}
+	else echo "\t[ ".$COLORS->getColoredString("OK", "light_green")." ]\n";
+}
+
 
 echo "\n\n";
 

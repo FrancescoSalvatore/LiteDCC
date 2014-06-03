@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['waitforclosing',['waitForClosing',['../classDCCTransfer.html#aeab6ad8d6c904dfdd559c4ae756e2dae',1,'DCCTransfer']]]
+  ['updatesentdata',['updateSentData',['../classDCCListManager.html#a1ea56aa082e482285ddd924e31424e73',1,'DCCListManager']]]
 ];

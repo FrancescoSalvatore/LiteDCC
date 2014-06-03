@@ -1,7 +1,7 @@
 <?php
 
 /*! \mainpage LiteDCC - An easy PHP iroffer
- ####Version 0.3 beta
+ ####Version 0.4 beta
 A simple IRC iroffer bot completely written in PHP.
 
 
@@ -46,6 +46,10 @@ LiteDCC supports only file with size inferior than 2GB because PHP built-in inte
 
 If you want to manage larger files you can use 64bit version of PHP (that is in beta) but anyway DCC protocol is limited at 4GB, so the maximum filesize results even so 4GB.
 
+=======
+
+###Why LiteDCC internal HTTP server does not support other file than the default page?
+Because it is a very very simple server. Maybe in future releases i expand it with support for other files (images, stylesheets etc...). 
 */
 
 ?>
